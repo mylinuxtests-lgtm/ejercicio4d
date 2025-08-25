@@ -273,14 +273,19 @@ if (
                                         $value = $sharedStrings[(int) $value] ?? '';
                                     }
                                     $style = "";
-        if (strtoupper($value) === "H") {
-            $style = "background-color: lightblue; font-weight:bold;";
-        } elseif (strtoupper($value) === "M") {
-            $style = "background-color: red; font-weight:bold;";
-        }
-
-        echo "<td style='$style'>" . htmlspecialchars($value) . "</td>";
-    }
+                                    if (strtoupper($value) === "H") {
+                                        $style = "background-color: lightblue; font-weight:bold;";
+                                    } elseif (strtoupper($value) === "M") {
+                                        $style = "background-color: red; font-weight:bold;";
+                                    } elseif (is_numeric($value)) {
+                                        if ((int) $value < 18) {
+                                            $style = "background-color: yellow; font-weight:bold;";
+                                        } else {
+                                            $style = "background-color: green; font-weight:bold;";
+                                        }
+                                    }
+                                    echo "<td style='$style'>" . htmlspecialchars($value) . "</td>";
+                                }
                                 echo "</tr>";
                             }
 
