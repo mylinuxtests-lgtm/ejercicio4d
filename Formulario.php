@@ -99,6 +99,7 @@ if (
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
+    <link rel="stylesheet" href="style.php" media="screen">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -271,8 +272,15 @@ if (
                                     if (isset($c['t']) && $c['t'] == 's') {
                                         $value = $sharedStrings[(int) $value] ?? '';
                                     }
-                                    echo "<td>" . htmlspecialchars($value) . "</td>";
-                                }
+                                    $style = "";
+        if (strtoupper($value) === "H") {
+            $style = "background-color: lightblue; font-weight:bold;";
+        } elseif (strtoupper($value) === "M") {
+            $style = "background-color: red; font-weight:bold;";
+        }
+
+        echo "<td style='$style'>" . htmlspecialchars($value) . "</td>";
+    }
                                 echo "</tr>";
                             }
 
